@@ -1,9 +1,8 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.views import serve
-from django.urls import include, re_path, path
+from django.urls import include, re_path
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib import admin
 
 from .core.views import jwks
 from .graphql.api import schema
@@ -17,8 +16,7 @@ from .product.views import digital_product
 from .thumbnail.views import handle_thumbnail
 
 urlpatterns = [
-    re_path(r'admin/', admin.site.urls),
-    re_path(r"^graphql/$", csrf_exempt(GraphQLView.as_view(schema=schema)), name="api"),
+    re_path(r"graphql/", csrf_exempt(GraphQLView.as_view(schema=schema)), name="api"),
     re_path(
         r"^digital-download/(?P<token>[0-9A-Za-z_\-]+)/$",
         digital_product,
