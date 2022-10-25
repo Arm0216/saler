@@ -425,7 +425,7 @@ PLAYGROUND_ENABLED = get_bool_from_env("PLAYGROUND_ENABLED", True)
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
-    'https://saleortesvan.herokuapp.com/', # your herokuapp url
+    'saleortesvan.herokuapp.com', # your herokuapp url
     '127.0.0.1'
 ]
 ALLOWED_GRAPHQL_ORIGINS = get_list(os.environ.get("ALLOWED_GRAPHQL_ORIGINS", "*"))
