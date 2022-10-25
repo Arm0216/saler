@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+  <title>GraphQL Playground</title>
+  <link rel="shortcut icon" href="https://cdn.jsdelivr.net/npm/graphql-playground-react@1.7.22/build/favicon.png" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@saleor/graphql-playground@2.0.0-6/dist/umd/index.css"
+    integrity="sha512-lUohGNgrZS/yBQbbS+gIy2h7LL58KNQSouG9I5S4R8aolm8c4L9D32LNgsrmSEOeOScobrk9PVyPLsvKl18D5w=="
+    crossorigin="anonymous"
+  />
+  <!-- sha256-Y/huXlwoYkVyQlxwSVcCi1RCDGDCSVBzDt0hYP9qlTc= is inline css added by the playground when opening settings -->
+  <!-- sha256-hM8ziVmFsNZhvY3EjvTholqPBoYTMv/3+1nOBhZrL+c= is the inline code below -->
+  <meta http-equiv="content-security-policy" content="default-src 'none'; connect-src {{ api_url }} {{ plugins_url }}; script-src https://cdn.jsdelivr.net/npm/@saleor/graphql-playground@2.0.0-6/dist/umd/index.js 'sha256-hM8ziVmFsNZhvY3EjvTholqPBoYTMv/3+1nOBhZrL+c='; style-src https://cdn.jsdelivr.net/npm/@saleor/graphql-playground@2.0.0-6/dist/umd/index.css 'sha256-Y/huXlwoYkVyQlxwSVcCi1RCDGDCSVBzDt0hYP9qlTc='; font-src 'self' data:; img-src data: https://cdn.jsdelivr.net/npm/graphql-playground-react@1.7.22/build/favicon.png" />
+</head>
+<body>
+  <div id="root" data-endpoint="{{ api_url }}" {% if query %}data-query="{{ query }}"{% endif %}></div>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@saleor/graphql-playground@2.0.0-6/dist/umd/index.js"
+    integrity="sha512-gEy+ZFwSH5sGHOMszcK9i9L7pQfPFkDHCmNOXPWzBAITd0r9yFFEsoppgCxU2PZdVkcL4Xt+SElmHdYqC713pQ=="
+    crossorigin="anonymous"
+  ></script>
+
+  {# sha256-hM8ziVmFsNZhvY3EjvTholqPBoYTMv/3+1nOBhZrL+c= #}
+  <script type="module">
+    const root = document.querySelector("#root");
+    const endpoint = root.dataset.endpoint;
+    const query = root.dataset.query;
+
+    createPlayground(root, { query, endpoint });
+  </script>
+</body>
+</html>
